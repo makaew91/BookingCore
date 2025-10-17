@@ -1,0 +1,40 @@
+version: "3.9"
+services:
+  app:
+    build:
+      context: .
+      target: app
+    image: bookingcore-app:dev
+    volumes:
+      - ./:/app
+    ports:
+      - "8000:8000"
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+      LOG_CHANNEL: stderr
+      DB_CONNECTION: pgsql
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_DATABASE: bookingcore
+      DB_USERNAME: coreuser
+      DB_PASSWORD: corepass
+    depends_on:
+      - db
+    command: /bin/sh -lc "php artisan migrate --force || true; php artisan serve --host=0.0.0.0 --port=8000"
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: bookingcore
+      POSTGRES_USER: bookingcore
+      POSTGRES_PASSWORD: bookingcore
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  db_data: {}
+
+
