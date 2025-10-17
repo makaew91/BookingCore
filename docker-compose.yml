@@ -17,8 +17,8 @@ services:
       DB_HOST: db
       DB_PORT: 5432
       DB_DATABASE: bookingcore
-      DB_USERNAME: coreuser
-      DB_PASSWORD: corepass
+      DB_USERNAME: bookingcore
+      DB_PASSWORD: bookingcore
     depends_on:
       - db
     command: /bin/sh -lc "php artisan migrate --force || true; php artisan serve --host=0.0.0.0 --port=8000"
@@ -32,7 +32,7 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5436:5432"
 
 volumes:
   db_data: {}
