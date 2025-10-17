@@ -8,10 +8,11 @@ use App\Http\Resources\HuntingBookingResource;
 use App\Models\Guide;
 use App\Models\HuntingBooking;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 
 class HuntingBookingController extends Controller
 {
-    public function store(StoreHuntingBookingRequest $request): JsonResponse
+    public function store(StoreHuntingBookingRequest $request)
     {
         $validated = $request->validated();
 
