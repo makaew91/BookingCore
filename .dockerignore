@@ -1,0 +1,14 @@
+.git
+.gitignore
+node_modules
+vendor
+.dockerignore
+.env
+.env.*
+.phpunit.cache
+.php-cs-fixer.cache
+storage/logs
+storage/framework/cache
+storage/framework/sessions
+storage/framework/views
+.DS_Store
